@@ -18,7 +18,7 @@ public class CustomUI : MonoBehaviour {
             // Get movement of the finger since last frame
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
 
-            if (touchDeltaPosition.x > 1) {
+            if (touchDeltaPosition.x > 0) {
                 SwipeRight();
             }
 
