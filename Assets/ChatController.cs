@@ -27,6 +27,7 @@ public class ChatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //TODO fill from json
         answers[0] = "first answer";       
         answers[1] = "second answer";       
         answers[2] = "third answer";
