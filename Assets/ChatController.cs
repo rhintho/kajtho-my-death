@@ -20,7 +20,7 @@ public class ChatController : MonoBehaviour
     float scrollViewHeight = 0f;
     //space in between messages
     float offset = 25f;
-    int answerCounter = 0;
+    int dialogIndex = 0;
 
     //tmp string
     string[] answers = new string[3];
@@ -54,6 +54,7 @@ public class ChatController : MonoBehaviour
         if (countdownFinished) {
             countdownFinished = false;
             PushQuestion();
+            chatDelay = 1;
         }
 
         if (animateScrollView) {
@@ -62,10 +63,29 @@ public class ChatController : MonoBehaviour
           
     }
 
-    void PushQuestion() {
+    public void PushQuestion() {
+        Debug.Log("push json dialog");
 
+        GameObject speechbubble_go;
+        speechbubble_go = Instantiate(answerChat_pf, chatScrollContainer.transform);
+
+        //place the answer below the last one
+        RectTransform rectangleTransform = speechbubble_go.GetComponent<RectTransform>();
+        rectangleTransform.anchoredPosition = new Vector2(0, yScrollPosition);
+        //increase the content container
+        chatScrollRectTransform.sizeDelta = new Vector2(chatScrollRectTransform.sizeDelta.x, chatScrollRectTransform.sizeDelta.y + rectangleTransform.sizeDelta.y + offset);
+        //Scroll position plus offset
+        yScrollPosition -= rectangleTransform.sizeDelta.y + offset;
+        //TODO: set text 
+        speechbubble_go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = chat.message[dialogIndex];
+        dialogIndex++;
+        //TODO: time
+        speechbubble_go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Time.time.ToString();
+
+        animateScrollView = true;
     }
 
+    //TODO: for debugging reasons, remove bool etc later
     public void PushAnswer(int answerPosition) {
         Debug.Log("pushing answer");
         //unity buttons allow only one parameter
@@ -75,7 +95,6 @@ public class ChatController : MonoBehaviour
             answerPosition = 2;
         }
            
-
         GameObject speechbubble_go;
 
         if(isPlayerWriting)

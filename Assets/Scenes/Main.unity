@@ -944,6 +944,7 @@ MonoBehaviour:
   content_go: {fileID: 1362863436}
   chatOpen_pf: {fileID: 1803450681416764001, guid: fa1e909e797fab444a602f9bb09ba405,
     type: 3}
+  allChatsContainer_go: {fileID: 1383833016}
   allUserChats: []
 --- !u!1 &496794007
 GameObject:
