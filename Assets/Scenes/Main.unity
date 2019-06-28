@@ -939,12 +939,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5fb9173503bf840808327c770ed158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatApp_go: {fileID: 0}
   userChat_pf: {fileID: 7607783900733038898, guid: 145405792df1eed40b46e9e7e1855239,
     type: 3}
   content_go: {fileID: 1362863436}
   chatOpen_pf: {fileID: 1803450681416764001, guid: fa1e909e797fab444a602f9bb09ba405,
     type: 3}
+  allUserChats: []
 --- !u!1 &496794007
 GameObject:
   m_ObjectHideFlags: 0
@@ -3335,6 +3335,36 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 994329869}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1383833016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383833017}
+  m_Layer: 0
+  m_Name: InstaChatAlllChats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1383833017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383833016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1390036998
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,9 +20,13 @@ public class ChatController : MonoBehaviour
     float scrollViewHeight = 0f;
     //space in between messages
     float offset = 25f;
+    int answerCounter = 0;
 
     //tmp string
     string[] answers = new string[3];
+
+    //content from json
+    JSONChat chat;
 
     // Start is called before the first frame update
     void Start()
@@ -106,5 +110,9 @@ public class ChatController : MonoBehaviour
             if (chatScrollRectTransform.anchoredPosition.y > (yScrollPosition+800) * -1)
                 animateScrollView = false;
         }
+    }
+
+    public void SetContent(JSONChat _chat) {
+        chat = _chat;
     }
 }
