@@ -66,23 +66,26 @@ public class ChatController : MonoBehaviour
     public void PushQuestion() {
         Debug.Log("push json dialog");
 
-        GameObject speechbubble_go;
-        speechbubble_go = Instantiate(answerChat_pf, chatScrollContainer.transform);
+        if (dialogIndex < chat.message.Length) {
+            GameObject speechbubble_go;
+            speechbubble_go = Instantiate(answerChat_pf, chatScrollContainer.transform);
 
-        //place the answer below the last one
-        RectTransform rectangleTransform = speechbubble_go.GetComponent<RectTransform>();
-        rectangleTransform.anchoredPosition = new Vector2(0, yScrollPosition);
-        //increase the content container
-        chatScrollRectTransform.sizeDelta = new Vector2(chatScrollRectTransform.sizeDelta.x, chatScrollRectTransform.sizeDelta.y + rectangleTransform.sizeDelta.y + offset);
-        //Scroll position plus offset
-        yScrollPosition -= rectangleTransform.sizeDelta.y + offset;
-        //TODO: set text 
-        speechbubble_go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = chat.message[dialogIndex];
-        dialogIndex++;
-        //TODO: time
-        speechbubble_go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Time.time.ToString();
+            //place the answer below the last one
+            RectTransform rectangleTransform = speechbubble_go.GetComponent<RectTransform>();
+            rectangleTransform.anchoredPosition = new Vector2(0, yScrollPosition);
+            //increase the content container
+            chatScrollRectTransform.sizeDelta = new Vector2(chatScrollRectTransform.sizeDelta.x, chatScrollRectTransform.sizeDelta.y + rectangleTransform.sizeDelta.y + offset);
+            //Scroll position plus offset
+            yScrollPosition -= rectangleTransform.sizeDelta.y + offset;
+            //set text 
+            speechbubble_go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = chat.message[dialogIndex];
+            speechbubble_go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = chat.date;
 
-        animateScrollView = true;
+            dialogIndex++;
+
+            animateScrollView = true;
+
+        }
     }
 
     //TODO: for debugging reasons, remove bool etc later

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,25 +22,32 @@ public class ChatApp : MonoBehaviour
     public GameObject[] allUserChats;
 
     JSONChat chat;
+    
     // Start is called before the first frame update
     void Start() {
+    }
+
+    public void OnEnable() {
+       
         allUserChats = new GameObject[numberOfUsers];
+        scrollRectTransform = content_go.GetComponent<RectTransform>();
         //read json
         chat = GameObject.Find("Utility").GetComponent<JSONHelper>().GetChat();
+
         //create prefab instances
-        scrollRectTransform = content_go.GetComponent<RectTransform>();
         for (int i = 0; i < numberOfUsers; i++) {
             CreateAllUserChats();
         }
-      
-        // fill everything into content go
-
-        //create individual chats for each users
     }
 
     private void CreateAllUserChats() {
 
+        //create user in overview
         GameObject userChat_go = Instantiate(userChat_pf, content_go.transform);
+        //fill content into userChat_go
+        userChat_go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = chat.username;
+        userChat_go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = chat.message[0];
+        userChat_go.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = chat.date;
 
         //place the answer below the last one
         RectTransform rectangleTransform = userChat_go.GetComponent<RectTransform>();
