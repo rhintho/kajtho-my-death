@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ChatController : MonoBehaviour {
+public class ChatUIController : MonoBehaviour {
     public GameObject scrollView_go;
     public GameObject chatScrollContainer;
     RectTransform m_chatScrollRectTransform;
@@ -23,8 +23,7 @@ public class ChatController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        m_chatScrollRectTransform = chatScrollContainer.GetComponent<RectTransform>();
-        m_scrollViewHeight = scrollView_go.GetComponent<RectTransform>().sizeDelta.y;
+
     }
 
     // Update is called once per frame
@@ -49,7 +48,7 @@ public class ChatController : MonoBehaviour {
 
     }
 
-    public void PushSpeechbubble(string message, bool isPlayer) {
+    public void PushSpeechbubble(string _message, bool isPlayer) {
 
         GameObject speechbubble_go;
         if(isPlayer)
@@ -57,24 +56,32 @@ public class ChatController : MonoBehaviour {
         else
             speechbubble_go = Instantiate(answerChat_pf, chatScrollContainer.transform);
 
-        speechbubble_go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = message;
-        speechbubble_go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = System.DateTime.Now.ToLongTimeString();
+        TextMeshProUGUI message = speechbubble_go.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI date = speechbubble_go.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        message.text = _message;
+        date.text = System.DateTime.Now.ToLongTimeString();
 
+        float lineCount = message.GetTextInfo(message.text).lineCount;
+        TMP_LineInfo[] lineHeight = message.GetTextInfo(message.text).lineInfo;
+        float height = lineCount * lineHeight[0].lineHeight + 110; //magic number
+        
         RectTransform rectangleTransform = speechbubble_go.GetComponent<RectTransform>();
-        UpdateRectangleTransform(rectangleTransform);
+        UpdateRectangleTransform(rectangleTransform, height);
 
     }
 
 
-    void UpdateRectangleTransform(RectTransform rectangle) {
+    void UpdateRectangleTransform(RectTransform rectangle, float height) {
         RectTransform speechbubbleTransform = rectangle;
         speechbubbleTransform.anchoredPosition = new Vector2(0, m_yScrollPosition);     //increase the content container
         //TODO: get size from amound of text
-        //speechbubbleTransform.sizeDelta = new Vector2(speechbubbleTransform.sizeDelta.x, speechbubbleTransform.sizeDelta.y);
+        speechbubbleTransform.sizeDelta = new Vector2(speechbubbleTransform.sizeDelta.x, height);
 
+        m_chatScrollRectTransform = chatScrollContainer.GetComponent<RectTransform>();
         m_chatScrollRectTransform.sizeDelta = new Vector2(m_chatScrollRectTransform.sizeDelta.x, m_chatScrollRectTransform.sizeDelta.y + speechbubbleTransform.sizeDelta.y + m_Offset);    //Scroll position plus offset
         m_yScrollPosition -= speechbubbleTransform.sizeDelta.y + m_Offset;     //add offset
         m_isScrollViewAnimating = true; //set animation flag
+        m_scrollViewHeight = scrollView_go.GetComponent<RectTransform>().sizeDelta.y;
     }
 
     void AnimateScrollView() {

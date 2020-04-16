@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5486849361526226893}
   - component: {fileID: 5666885523372645665}
   m_Layer: 5
-  m_Name: TextMeshPro Text (1)
+  m_Name: text_date
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,10 +32,10 @@ RectTransform:
   m_Father: {fileID: 5487866845412826197}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -93.7}
-  m_SizeDelta: {x: 486.5, y: 37.8}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -250.6, y: 34.300003}
+  m_SizeDelta: {x: 390.5, y: 37.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5486849361526226893
 CanvasRenderer:
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 1.6000977, w: 0}
   m_textInfo:
     textComponent: {fileID: 5666885523372645665}
     characterCount: 5
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5486801628387969185}
   - component: {fileID: 5668625200047780457}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: text_message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,8 +191,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7.5}
-  m_SizeDelta: {x: 0, y: -15}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5486801628387969185
 CanvasRenderer:
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 20.6, y: 22.55, z: 35.98, w: 0}
+  m_margin: {x: 44, y: 24, z: 54, w: 0}
   m_textInfo:
     textComponent: {fileID: 5668625200047780457}
     characterCount: 155
@@ -297,7 +297,7 @@ MonoBehaviour:
     spaceCount: 23
     wordCount: 24
     linkCount: 0
-    lineCount: 5
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 5487866845412826197}
   - component: {fileID: 5487604773338027957}
   - component: {fileID: 5666992671859349799}
+  - component: {fileID: 8074853527832836760}
   m_Layer: 5
   m_Name: question
   m_TagString: Untagged
@@ -352,7 +353,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -346.3001, y: -591.3501}
-  m_SizeDelta: {x: 528.4, y: 255.30005}
+  m_SizeDelta: {x: 493.3, y: 255.30005}
   m_Pivot: {x: 0.9999999, y: 0.9999998}
 --- !u!222 &5487604773338027957
 CanvasRenderer:
@@ -375,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.59607846, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.53792745, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -391,3 +392,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!111 &8074853527832836760
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5708259250512726725}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 3a7f5d5b3fe28e545ac2a7e24dc476fc, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3a7f5d5b3fe28e545ac2a7e24dc476fc, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

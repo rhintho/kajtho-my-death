@@ -9,18 +9,19 @@ using TMPro;
  * after input: Get Choice and progress to next Node -> Update NPC Text -> Next Node -> Update Player Text -> wait for input
  * 
  */
-public class SmsUIManager : MonoBehaviour
-{
+public class SmsUIManager : MonoBehaviour {
     //VIDE node members
     public TextMeshProUGUI playerAnswerOne;
     public TextMeshProUGUI playerAnswerTwo;
     public TextMeshProUGUI playerAnswerThree;
-    public TextMeshProUGUI currentNPCLabel;
+    //public TextMeshProUGUI currentNPCLabel;
     VD.NodeData data;
+
+    bool isLoaded = false;
 
     //ui handler
     public GameObject smsApp;
-    ChatController currentChatController;
+    ChatUIController currentChatController;
 
     void Start() {
         //prepare dialogue 
@@ -28,14 +29,25 @@ public class SmsUIManager : MonoBehaviour
         gameObject.AddComponent<VD>();
         VD.BeginDialogue(GetComponent<VIDE_Assign>());
         data = VD.nodeData;
-       
-        //TODO: get active chat controller
-        currentChatController = smsApp.GetComponent<ChatController>();  //prepare ui
-        UpdateNPCText(); //Start Conversation
     }
 
     void OnDisable() {
         VD.EndDialogue();
+    }
+    public void OnEnable() {
+
+    }
+
+    public void PrepareDialogue() {
+        if (!isLoaded) {
+            isLoaded = true;
+  
+            //TODO: get active chat controller
+            currentChatController = smsApp.GetComponent<ChatUIController>();  //prepare ui
+            UpdateNPCText(); //Start Conversation
+           // smsApp.SetActive(false); //TODO: null pointer when GO not active on load, need to improve this
+        }
+
     }
 
     public void UpdatePlayerText() {
@@ -43,7 +55,7 @@ public class SmsUIManager : MonoBehaviour
             playerAnswerOne.text = data.comments[0];
             playerAnswerTwo.text = data.comments[1];
             playerAnswerThree.text = data.comments[2];
-        }     
+        }
     }
 
     public void UpdateNPCText() {
@@ -73,6 +85,6 @@ public class SmsUIManager : MonoBehaviour
 
     public void EndConversation() {
         Debug.Log("conversation ends");
-    
+
     }
 }
