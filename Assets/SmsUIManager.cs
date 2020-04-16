@@ -15,20 +15,28 @@ public class SmsUIManager : MonoBehaviour {
     public TextMeshProUGUI playerAnswerTwo;
     public TextMeshProUGUI playerAnswerThree;
     //public TextMeshProUGUI currentNPCLabel;
-    VD.NodeData data;
+    VIDE_Data.VD2 data;
+    //A list that will contain instances of VD2, which will handle dialogue data
+    public List<VD2> dialogueDataInstances = new List<VD2>();
 
-    bool isLoaded = false;
-
+    bool m_isLoaded = false;
+    int m_currentDialogueIndex;
     //ui handler
     public GameObject smsApp;
-    ChatUIController currentChatController;
+    public ChatUIController currentChatController;
 
     void Start() {
         //prepare dialogue 
         //TODO: get active dialogue tree
+        /*
         gameObject.AddComponent<VD>();
         VD.BeginDialogue(GetComponent<VIDE_Assign>());
         data = VD.nodeData;
+        */
+        //Let's just add 4 instances of VD2 for our dialogues
+        for (int i = 0; i < 2; i++)
+            dialogueDataInstances.Add(new VD2());
+
     }
 
     void OnDisable() {
@@ -38,53 +46,65 @@ public class SmsUIManager : MonoBehaviour {
 
     }
 
-    public void PrepareDialogue() {
-        if (!isLoaded) {
-            isLoaded = true;
-  
-            //TODO: get active chat controller
-            currentChatController = smsApp.GetComponent<ChatUIController>();  //prepare ui
+    public void PrepareDialogue(int dialogueIndex) {
+        m_currentDialogueIndex = dialogueIndex;
+        data = dialogueDataInstances[m_currentDialogueIndex];
+
+        if (!data.isActive) {
+            data.OnEnd += EndConversation; //Required events
+            data.BeginDialogue(GetComponent<VIDE_Assign>());
+            //This will begin the dialogue for that instance
+        }
+        if (!m_isLoaded) {
+            m_isLoaded = true;
             UpdateNPCText(); //Start Conversation
-           // smsApp.SetActive(false); //TODO: null pointer when GO not active on load, need to improve this
         }
 
     }
 
     public void UpdatePlayerText() {
-        if (data.isPlayer) {
-            playerAnswerOne.text = data.comments[0];
-            playerAnswerTwo.text = data.comments[1];
-            playerAnswerThree.text = data.comments[2];
+        if (data.nodeData.isPlayer) {
+            playerAnswerOne.text = data.nodeData.comments[0];
+            playerAnswerTwo.text = data.nodeData.comments[1];
+            playerAnswerThree.text = data.nodeData.comments[2];
         }
     }
 
     public void UpdateNPCText() {
-        //currentNPCLabel.text = data.comments[0];
-        currentChatController.PushSpeechbubble(data.comments[0], false);
+        currentChatController.PushSpeechbubble(data.nodeData.comments[0], false);
         LoadNextNode();
     }
 
     //triggered by buttons in scene
     public void LoadNextNode(int choice) {
-        data.commentIndex = choice;
-        currentChatController.PushSpeechbubble(data.comments[choice], true);
-        if (data.isEnd)
-            EndConversation();
-        VD.Next();
-        data = VD.nodeData;
-        UpdateNPCText();
+        if (data.isActive) {
+            data.nodeData.commentIndex = choice;
+
+            currentChatController.PushSpeechbubble(data.nodeData.comments[choice], true);
+            data.Next();
+            data = dialogueDataInstances[m_currentDialogueIndex];
+            UpdateNPCText();
+        }
+        else
+            data.OnEnd += EndConversation;
+
     }
 
     void LoadNextNode() {
-        if (data.isEnd)
-            EndConversation();
-        VD.Next();
-        data = VD.nodeData;
-        UpdatePlayerText();
+        if (data.isActive) {
+            data.Next();
+            data = dialogueDataInstances[m_currentDialogueIndex];
+
+            UpdatePlayerText();
+        }
+        else
+            data.OnEnd += EndConversation;
     }
 
-    public void EndConversation() {
+    public void EndConversation(VD2 data) {
         Debug.Log("conversation ends");
-
+        data.OnEnd -= EndConversation;
+        data.EndDialogue();
     }
+
 }

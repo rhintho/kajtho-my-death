@@ -2262,7 +2262,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1742235568}
         m_MethodName: PrepareDialogue
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2800,11 +2800,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114351302037761212, guid: 159827a6b1c91a24e93f738fbc0c75e3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114744460408847508, guid: 159827a6b1c91a24e93f738fbc0c75e3,
         type: 3}
@@ -4704,6 +4699,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189980772}
   m_CullTransparentMesh: 0
+--- !u!114 &1203392405 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2118717181241762320, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1010269369}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb4832406aaaf1942b1530d9165b87ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1293041919
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,6 +5285,7 @@ MonoBehaviour:
   playerAnswerTwo: {fileID: 117466567}
   playerAnswerThree: {fileID: 1956660553}
   smsApp: {fileID: 1587906184}
+  currentChatController: {fileID: 1203392405}
 --- !u!4 &1742235569
 Transform:
   m_ObjectHideFlags: 0
@@ -5314,13 +5322,14 @@ MonoBehaviour:
   - Example4_dialogue
   - Item_LookUp
   - Laura
+  - Mom_sms
   - MrCube
   - MyDialogue
   - NPCOnly
   - QuestChartDemo
   - TriggeredDude
   - Witch
-  assignedIndex: 10
+  assignedIndex: 11
   assignedID: 14462
   assignedDialogue: MyDialogue
   interactionCount: 1
