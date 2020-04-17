@@ -1,0 +1,116 @@
+Edit the dialogue on the go.
+You can edit and add comments, edit the tags, and set node type.
+Do not attempt to add more nodes: the number of nodes must match when importing the text file.
+Do not modify the IDs.
+Do not add or remove empty lines.
+Do not restructure the data.
+
+Dialogue name: MyDialogue
+---------------------------------
+#NODEID#
+0
+#TAG#
+
+#ISPLAYER#
+False
+---
+#COMMENT#
+Hello?
+---------------------------------
+#NODEID#
+1
+#TAG#
+
+#ISPLAYER#
+True
+---
+#COMMENT#
+Hello
+#COMMENT#
+Who are you?
+#COMMENT#
+?
+---------------------------------
+#NODEID#
+2
+#TAG#
+
+#ISPLAYER#
+False
+---
+#COMMENT#
+Finally! There you are.
+---------------------------------
+#NODEID#
+3
+#TAG#
+
+#ISPLAYER#
+False
+---
+#COMMENT#
+Wait.. who are you?
+---------------------------------
+#NODEID#
+4
+#TAG#
+
+#ISPLAYER#
+True
+---
+#COMMENT#
+Yeah... sorry I didn't get back to you
+#COMMENT#
+Good to hear from you
+#COMMENT#
+:)
+---------------------------------
+#NODEID#
+5
+#TAG#
+
+#ISPLAYER#
+True
+---
+#COMMENT#
+WTF do you think
+#COMMENT#
+It's Sara, Sherlock
+#COMMENT#
+...
+---------------------------------
+#NODEID#
+6
+#TAG#
+
+#ISPLAYER#
+False
+---
+#COMMENT#
+We have to talk....Pls there are so many thing we have to talk about. Time is of the essence
+---------------------------------
+#NODEID#
+7
+#TAG#
+
+#ISPLAYER#
+False
+---
+#COMMENT#
+Ok I dont know who you are, but I'm guessing that you have Sara's phone for a reason....
+---------------------------------
+#NODEID#
+8
+#TAG#
+
+#ISPLAYER#
+True
+---
+#COMMENT#
+Yeah sure lets talk
+#COMMENT#
+No problem, wanna call?
+#COMMENT#
+I dont have time
+---------------------------------
+#END#
