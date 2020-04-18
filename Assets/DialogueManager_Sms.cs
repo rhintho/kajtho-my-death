@@ -17,19 +17,18 @@ public class DialogueManager_Sms : MonoBehaviour {
     //public TextMeshProUGUI currentNPCLabel;
     int m_choice;
     int m_currentDialogueIndex;
+    int m_currentNodeID;
     //ui handler
-    public ChatUIController currentChatController;
-    VIDE_Assign lastDialogue;
+    public ChatUIController currentChatUIController;
+    VIDE_Assign m_currentDialogue;
+    public CustomDialogueState dialogueState;
 
     void Awake() {
         // gameObject.AddComponent<VD>();
         VD.LoadDialogues("MyDialogue");
         VD.LoadDialogues("Mom_sms");
         //load state, needs to be created first
-        VD.LoadState("levelState", true);
-    }
-    void Start() {
-
+        //VD.LoadState("levelState", true);
     }
 
     public void Interact(VIDE_Assign dialogue) {
@@ -39,39 +38,45 @@ public class DialogueManager_Sms : MonoBehaviour {
         //for implementation check VIDEUIManager.cs in demoScene1
         //var doNotInteract = PreConditions(dialogue);
         //if (doNotInteract) return;
-
-        lastDialogue = dialogue;  //store for later
-
-        if (!VD.isActive) {
-            PrepareDialogue(dialogue);
+        if(dialogue != m_currentDialogue) {
+            m_currentDialogue = dialogue;  //store for later
+            dialogueState = dialogue.gameObject.GetComponent<CustomDialogueState>();
         }
-        else {
-            LoadNextNode();
+        //Debug.Log("vd is active: " + VD.isActive + " is paused: " + dialogueState.isPaused + " has Started " + dialogueState.hasStarted);
+
+        if (!VD.isActive && !dialogueState.isPaused && !dialogueState.hasStarted) {
+            dialogueState.hasStarted = true;
+            PrepareDialogue(m_currentDialogue);        
+        }
+        else if (!VD.isActive && dialogueState.isPaused) {
+            ContinueDialogue(m_currentDialogue);
+            dialogueState.isPaused = false;
+        }
+        else if (VD.isActive) {
+            LoadNextNode();           
         }
     }
 
     public void PrepareDialogue(VIDE_Assign dialogue) {
-
+        //Debug.Log("prepare");
         //load state, needs to be created first
-        VD.LoadState("levelState", true);
+        //VD.LoadState("levelState", true);
         //VD.OnActionNode += ActionHandler; // to be implemented
         VD.OnNodeChange += UpdateUI;
         VD.OnEnd += EndConversation; //Required events
-
         VD.BeginDialogue(dialogue);
-
     }
 
     public void UpdateUI(VD.NodeData data) {
 
         if (data.isPlayer) {
-            currentChatController.UpdateButtonText(data.comments, lastDialogue);
+            currentChatUIController.UpdateButtonText(data.comments, m_currentDialogue);
         }
         else { //not a player
             if (data.comments.Length == 1) {
-                currentChatController.PushSpeechbubble(data.comments[0], false);
+                currentChatUIController.PushSpeechbubble(data.comments[0], false);
                 if (!data.isEnd)
-                    Interact(lastDialogue);
+                    Interact(m_currentDialogue);
             }
         }
     }
@@ -79,12 +84,14 @@ public class DialogueManager_Sms : MonoBehaviour {
 
     //triggered by buttons in scene
     public void LoadNextNode(int choice) {
+        //Debug.Log("loadnext");
         if (VD.isActive) {
             var data = VD.nodeData;
+
             if (choice <= data.comments.Length) {
                 data.commentIndex = choice;
                 //push player answer to UI
-                currentChatController.PushSpeechbubble(data.comments[choice], true);
+                currentChatUIController.PushSpeechbubble(data.comments[choice], true);
             }
             else
                 Debug.Log("player choice is higher than node comment index");
@@ -105,7 +112,8 @@ public class DialogueManager_Sms : MonoBehaviour {
         VD.OnEnd -= EndConversation;
         VD.EndDialogue();
 
-        VD.SaveState("levelState", true); //Saves VIDE stuff related to EVs and override start nodes
+        currentChatUIController.DisableButtons();
+        //VD.SaveState("levelState", true); //Saves VIDE stuff related to EVs and override start nodes
     }
 
     public void OnDisable() {
@@ -116,17 +124,36 @@ public class DialogueManager_Sms : MonoBehaviour {
         VD.OnEnd -= EndConversation;
         VD.EndDialogue();
 
+        VD.SaveState("levelState", true); //Saves VIDE stuff related to EVs and override start nodes
+
     }
 
     public void PauseConversation() {
-        Debug.Log("conversation interrupted, saving");
 
-        //VD.OnActionNode -= ActionHandler;
-        VD.OnNodeChange -= UpdateUI;
-        VD.OnEnd -= EndConversation;
-        VD.EndDialogue();
+        if (VD.isActive && !VD.nodeData.isEnd) {
+            Debug.Log("conversation interrupted, saving at node : " + VD.nodeData.nodeID);
+            //VD.OnActionNode -= ActionHandler;
+            VD.OnNodeChange -= UpdateUI;
+            VD.OnEnd -= EndConversation;
+            //VD.SaveState("levelState", true); //Saves VIDE stuff related to EVs and override start nodes
+            // m_currentNodeID = VD.nodeData.nodeID;
+            dialogueState.currentNode = VD.nodeData.nodeID;
+            VD.EndDialogue();
 
-        VD.SaveState("levelState", true); //Saves VIDE stuff related to EVs and override start nodes
+        }
+        dialogueState.isPaused = true;
+    }
+
+    public void ContinueDialogue(VIDE_Assign dialogue) {
+        //Debug.Log("continuing");
+        //load state, needs to be created first
+        Debug.Log("should load at: " + dialogueState.currentNode);
+        VD.BeginDialogue(dialogue);
+        VD.SetNode(dialogueState.currentNode);
+        //VD.Next();
+        //VD.OnActionNode += ActionHandler; // to be implemented
+        VD.OnNodeChange += UpdateUI;
+        VD.OnEnd += EndConversation; //Required events
 
     }
 }

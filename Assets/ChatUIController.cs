@@ -26,7 +26,7 @@ public class ChatUIController : MonoBehaviour {
     bool m_isCountdownFinished = false;
     bool m_isScrollViewAnimating = false;
     //magic animation numbers
-    float m_yScrollPosition = -10f;
+    float m_yScrollPosition;
     float m_scrollViewHeight = 0f;
     float m_Offset = 25f;     //space in between messages
 
@@ -76,7 +76,6 @@ public class ChatUIController : MonoBehaviour {
     }
 
     public void PushSpeechbubble(string _message, bool isPlayer) {
-
         GameObject speechbubble_go;
         if (isPlayer)
             speechbubble_go = Instantiate(questionChat_pf, chatScrollContainer.transform);
@@ -115,15 +114,23 @@ public class ChatUIController : MonoBehaviour {
 
     }
 
+    public void DisableButtons() {
+        playerAnswerOne.transform.parent.gameObject.SetActive(false);
+        playerAnswerTwo.transform.parent.gameObject.SetActive(false);
+        playerAnswerThree.transform.parent.gameObject.SetActive(false);
+    }
+
     void UpdateRectangleTransform(RectTransform rectangle, float height) {
         RectTransform speechbubbleTransform = rectangle;
+        m_yScrollPosition = scrollView_go.transform.parent.GetComponent<ScrollView>().yScrollPosition;
         speechbubbleTransform.anchoredPosition = new Vector2(0, m_yScrollPosition);     //increase the content container
         speechbubbleTransform.sizeDelta = new Vector2(speechbubbleTransform.sizeDelta.x, height);
 
         m_chatScrollRectTransform = chatScrollContainer.GetComponent<RectTransform>();
         m_chatScrollRectTransform.sizeDelta = new Vector2(m_chatScrollRectTransform.sizeDelta.x, m_chatScrollRectTransform.sizeDelta.y + speechbubbleTransform.sizeDelta.y + m_Offset);    //Scroll position plus offset
-        //TODO: scrollPosition needs to be resetted for each chat
+        //Update ScrollPosition on Object
         m_yScrollPosition -= speechbubbleTransform.sizeDelta.y + m_Offset;     //add offset
+        scrollView_go.transform.parent.GetComponent<ScrollView>().yScrollPosition = m_yScrollPosition;
         m_isScrollViewAnimating = true; //set animation flag
         m_scrollViewHeight = scrollView_go.GetComponent<RectTransform>().sizeDelta.y;
     }

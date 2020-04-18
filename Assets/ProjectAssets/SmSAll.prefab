@@ -106,8 +106,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 32.2, y: -0.000022269474}
-  m_SizeDelta: {x: -64.4, y: 794.64}
+  m_AnchoredPosition: {x: 32.2, y: 0.00004339186}
+  m_SizeDelta: {x: -64.4, y: 244.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1195281810871814
 GameObject:
@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 114865550211896092}
   - component: {fileID: 222159373069348018}
   - component: {fileID: 114910739814112670}
+  - component: {fileID: 3891469595626679405}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -217,6 +218,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &3891469595626679405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195281810871814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacdd7654923258468f3d12141f7d612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_yScrollPosition: 0
 --- !u!1 &1211390186695718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,8 +1833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.9736069}
-  m_AnchoredPosition: {x: 0, y: -1.7000122}
-  m_SizeDelta: {x: 0.000061035, y: -19}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &114517833269707046
 MonoBehaviour:
@@ -4373,7 +4387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6762443227430095685
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5029,6 +5043,7 @@ GameObject:
   - component: {fileID: 5126490317012309285}
   - component: {fileID: 7991286793023797686}
   - component: {fileID: 6655756080842234087}
+  - component: {fileID: 2229508495048410822}
   m_Layer: 5
   m_Name: SMSOpen_jellybeans
   m_TagString: Untagged
@@ -5142,6 +5157,18 @@ MonoBehaviour:
   langs: []
   S_playerDiags: []
   S_actionNodes: []
+--- !u!114 &2229508495048410822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3061775748684022618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231596195c262c44899cd07340245b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3177115612653677615
 GameObject:
   m_ObjectHideFlags: 0
@@ -8419,13 +8446,14 @@ GameObject:
   - component: {fileID: 8097392074431141300}
   - component: {fileID: 8652386693346160054}
   - component: {fileID: 8752201750830111860}
+  - component: {fileID: 316232586610873842}
   m_Layer: 5
   m_Name: SMSOpen_Mom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4786923059164553506
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8532,6 +8560,18 @@ MonoBehaviour:
   langs: []
   S_playerDiags: []
   S_actionNodes: []
+--- !u!114 &316232586610873842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6996094936554062187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231596195c262c44899cd07340245b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7064306956369006719
 GameObject:
   m_ObjectHideFlags: 0
@@ -8757,7 +8797,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 32.2, y: -0.000022269474}
-  m_SizeDelta: {x: -64.4, y: 794.64}
+  m_SizeDelta: {x: -64.4, y: 245.4}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7259432004902324776
 GameObject:
@@ -9388,7 +9428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1951269788547105838
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10002,6 +10042,7 @@ GameObject:
   - component: {fileID: 6335757020648236051}
   - component: {fileID: 6006357706850711871}
   - component: {fileID: 961001583374733409}
+  - component: {fileID: 7575577847128376394}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -10098,6 +10139,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7575577847128376394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531764014785697364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacdd7654923258468f3d12141f7d612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_yScrollPosition: 0
 --- !u!1 &8717379015275355724
 GameObject:
   m_ObjectHideFlags: 0
