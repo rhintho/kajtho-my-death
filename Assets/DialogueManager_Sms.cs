@@ -31,35 +31,36 @@ public class DialogueManager_Sms : MonoBehaviour {
         //VD.LoadState("levelState", true);
     }
 
+    /// <summary>
+    /// core function, get called by interaction objects in scene, whenever a chat is being opened
+    /// you could also use this from an evenhandler script that triggers certain events
+    /// </summary>
     public void Interact(VIDE_Assign dialogue) {
-        //Sometimes, we might want to check the ExtraVariables and VAs before moving forward
-        //We might want to modify the dialogue or perhaps go to another node, or dont start the dialogue at all
-        //In such cases, the function will return true
-        //for implementation check VIDEUIManager.cs in demoScene1
-        //var doNotInteract = PreConditions(dialogue);
-        //if (doNotInteract) return;
+        // whenever the user looks at a different chat
         if(dialogue != m_currentDialogue) {
             m_currentDialogue = dialogue;  //store for later
             dialogueState = dialogue.gameObject.GetComponent<CustomDialogueState>();
         }
-        //Debug.Log("vd is active: " + VD.isActive + " is paused: " + dialogueState.isPaused + " has Started " + dialogueState.hasStarted);
-
+        //only call this on first load
         if (!VD.isActive && !dialogueState.isPaused && !dialogueState.hasStarted) {
             dialogueState.hasStarted = true;
             PrepareDialogue(m_currentDialogue);        
-        }
+        } 
+        //whenenver the dialogues has been paused
         else if (!VD.isActive && dialogueState.isPaused) {
             ContinueDialogue(m_currentDialogue);
             dialogueState.isPaused = false;
         }
+        //default next load
         else if (VD.isActive) {
             LoadNextNode();           
         }
     }
 
+    /// <summary>
+    /// only call this on first load
+    /// </summary>
     public void PrepareDialogue(VIDE_Assign dialogue) {
-        //Debug.Log("prepare");
-        //load state, needs to be created first
         //VD.LoadState("levelState", true);
         //VD.OnActionNode += ActionHandler; // to be implemented
         VD.OnNodeChange += UpdateUI;
@@ -67,6 +68,12 @@ public class DialogueManager_Sms : MonoBehaviour {
         VD.BeginDialogue(dialogue);
     }
 
+    /// <summary>
+    /// passes node text to ui handler
+    /// also triggers the next node, if the current one is an NPC node
+    /// this is so that the player chooses and answer, reads the NPCs sentence and can proceed immediatly
+    /// without any interaction
+    /// </summary>
     public void UpdateUI(VD.NodeData data) {
 
         if (data.isPlayer) {
@@ -81,7 +88,9 @@ public class DialogueManager_Sms : MonoBehaviour {
         }
     }
 
-    //triggered by buttons in scene
+    /// <summary>
+    /// triggered by buttons in scene, passes the players choice
+    /// </summary>
     public void LoadNextNode(int choice) {
         //Debug.Log("loadnext");
         if (VD.isActive) {
@@ -107,6 +116,10 @@ public class DialogueManager_Sms : MonoBehaviour {
         VD.Next();
     }
 
+    /// <summary>
+    /// unsubscribes all events on end of conversation
+    /// buttons will be disabled so the player can see that a conversation has ended
+    /// </summary>
     public void EndConversation(VD.NodeData data) {
         Debug.Log("conversation ends");
         //VD.OnActionNode -= ActionHandler;
@@ -118,6 +131,9 @@ public class DialogueManager_Sms : MonoBehaviour {
         //VD.SaveState("levelState", true); //Saves VIDE stuff related to EVs and override start nodes
     }
 
+    /// <summary>
+    /// this is precaution for when the dialogue manager GO gets disabled for whatever reason
+    /// </summary>
     public void OnDisable() {
         Debug.Log("dialogue manager disabled. forcing dialogue end");
 
@@ -130,8 +146,13 @@ public class DialogueManager_Sms : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// this is called whenenver the player leaves the chatapp
+    /// called by: home button, back button
+    /// will save the current node, this should be done via SaveState and LoadState but atm it seems to be bugged
+    /// dialogue needs to be ended and delegates to be unsubscribed
+    /// </summary>
     public void PauseConversation() {
-
         if (VD.isActive && !VD.nodeData.isEnd) {
             Debug.Log("conversation interrupted, saving at node : " + VD.nodeData.nodeID);
             //VD.OnActionNode -= ActionHandler;
@@ -145,10 +166,12 @@ public class DialogueManager_Sms : MonoBehaviour {
         dialogueState.isPaused = true;
     }
 
+    /// <summary>
+    /// continue dialogue on last active node
+    /// subscribe to all events
+    /// </summary>
     public void ContinueDialogue(VIDE_Assign dialogue) {
-        //Debug.Log("continuing");
-        //load state, needs to be created first
-        Debug.Log("should load at: " + dialogueState.currentNode);
+        //Debug.Log("should load at: " + dialogueState.currentNode);
         VD.BeginDialogue(dialogue);
         VD.SetNode(dialogueState.currentNode);
         //VD.OnActionNode += ActionHandler; // to be implemented
