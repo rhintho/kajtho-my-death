@@ -946,7 +946,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427326743}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e5fb9173503bf840808327c770ed158, type: 3}
   m_Name: 
@@ -956,7 +956,7 @@ MonoBehaviour:
   content_go: {fileID: 1362863436}
   chatOpen_pf: {fileID: 1803450681416764001, guid: fa1e909e797fab444a602f9bb09ba405,
     type: 3}
-  allChatsContainer_go: {fileID: 1383833016}
+  allChatsContainer_go: {fileID: 0}
   allUserChats: []
 --- !u!1 &496794007
 GameObject:
@@ -1551,49 +1551,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565400367}
   m_CullTransparentMesh: 0
---- !u!1 &590490745
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 590490747}
-  - component: {fileID: 590490746}
-  m_Layer: 0
-  m_Name: Utility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &590490746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590490745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d91a770758c3d66428e684009b0468fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &590490747
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590490745}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &609350446
 GameObject:
   m_ObjectHideFlags: 0
@@ -4453,6 +4410,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8752201750830111860, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: S_playerDiags.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752201750830111860, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: preload
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6655756080842234087, guid: 159827a6b1c91a24e93f738fbc0c75e3,
         type: 3}
       propertyPath: S_playerDiags.Array.size
@@ -5123,36 +5090,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 994329869}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1383833016
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1383833017}
-  m_Layer: 0
-  m_Name: InstaChatAlllChats
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1383833017
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383833016}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1390036998
 GameObject:
   m_ObjectHideFlags: 0
@@ -5523,7 +5460,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1793106541
 PrefabInstance:

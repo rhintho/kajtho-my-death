@@ -11,6 +11,10 @@ public class CustomDialogueState : MonoBehaviour
         set { m_currentNode = value; }
     }
 
+    /// <summary>
+    /// flags if the dialogue is paused or not
+    /// gets paused by DialogueManager
+    /// </summary>
     bool m_isPaused = false;
     [SerializeField]
     public bool isPaused {
@@ -18,11 +22,26 @@ public class CustomDialogueState : MonoBehaviour
         set { m_isPaused = value; }
     }
 
+    /// <summary>
+    /// check is the dialogue has been loaded once
+    /// is started by DialogueManager
+    /// </summary>
     bool m_hasStarted = false;
     [SerializeField]
     public bool hasStarted {
         get { return m_hasStarted; }
         set { m_hasStarted = value; }
+    }
+
+    /// <summary>
+    /// if dialogue is preloaded, all nodes will be loaded on start
+    /// this helps to generate old conversations for the player to read
+    /// </summary>
+    bool m_isPreloaded = false;
+    [SerializeField]
+    public bool isPreloaded {
+        get { return m_isPreloaded; }
+        set { m_isPreloaded = value; }
     }
 
 }

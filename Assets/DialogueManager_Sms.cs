@@ -37,15 +37,15 @@ public class DialogueManager_Sms : MonoBehaviour {
     /// </summary>
     public void Interact(VIDE_Assign dialogue) {
         // whenever the user looks at a different chat
-        if(dialogue != m_currentDialogue) {
+        if (dialogue != m_currentDialogue) {
             m_currentDialogue = dialogue;  //store for later
             dialogueState = dialogue.gameObject.GetComponent<CustomDialogueState>();
         }
         //only call this on first load
         if (!VD.isActive && !dialogueState.isPaused && !dialogueState.hasStarted) {
             dialogueState.hasStarted = true;
-            PrepareDialogue(m_currentDialogue);        
-        } 
+            PrepareDialogue(m_currentDialogue);
+        }
         //whenenver the dialogues has been paused
         else if (!VD.isActive && dialogueState.isPaused) {
             ContinueDialogue(m_currentDialogue);
@@ -53,7 +53,7 @@ public class DialogueManager_Sms : MonoBehaviour {
         }
         //default next load
         else if (VD.isActive) {
-            LoadNextNode();           
+            LoadNextNode();
         }
     }
 
@@ -66,6 +66,7 @@ public class DialogueManager_Sms : MonoBehaviour {
         VD.OnNodeChange += UpdateUI;
         VD.OnEnd += EndConversation; //Required events
         VD.BeginDialogue(dialogue);
+
     }
 
     /// <summary>
@@ -76,16 +77,27 @@ public class DialogueManager_Sms : MonoBehaviour {
     /// </summary>
     public void UpdateUI(VD.NodeData data) {
 
-        if (data.isPlayer) {
-            currentChatUIController.UpdateButtonText(data.comments, m_currentDialogue);
+        bool isPreloaded = false;
+        if (data.extraVars.ContainsKey("Preloaded")) {
+            isPreloaded = (bool)data.extraVars["Preloaded"];
         }
-        else { //not a player
-            if (data.comments.Length == 1) {
-                currentChatUIController.PushSpeechbubble(data.comments[0], false);
-                if (!data.isEnd)
-                    Interact(m_currentDialogue);
+
+        if (!isPreloaded) {
+            if (data.isPlayer) {
+                currentChatUIController.UpdateButtonText(data.comments, m_currentDialogue);
+            }
+            else { //not a player
+                if (data.comments.Length == 1) {
+                    currentChatUIController.PushSpeechbubble(data.comments[0], false);
+                    if (!data.isEnd)
+                        Interact(m_currentDialogue);
+                }
             }
         }
+        else {
+            PushAllNodes();
+        }
+
     }
 
     /// <summary>
@@ -106,7 +118,7 @@ public class DialogueManager_Sms : MonoBehaviour {
                 //push player answer to UI
                 currentChatUIController.PushSpeechbubble(data.comments[0], true);
             }
-              
+
             if (!data.isEnd)
                 VD.Next();
         }
@@ -162,8 +174,9 @@ public class DialogueManager_Sms : MonoBehaviour {
             dialogueState.currentNode = VD.nodeData.nodeID;
             VD.EndDialogue();
 
+            dialogueState.isPaused = true;
         }
-        dialogueState.isPaused = true;
+
     }
 
     /// <summary>
@@ -178,5 +191,26 @@ public class DialogueManager_Sms : MonoBehaviour {
         VD.OnNodeChange += UpdateUI;
         VD.OnEnd += EndConversation; //Required events
 
+    }
+
+    /// <summary>
+    /// preloads all nodes
+    /// not elegant but it works
+    /// </summary>
+    public void PushAllNodes() {
+        //pushing all Nodes
+        VD.OnNodeChange -= UpdateUI;
+
+        int nodeCount = VD.GetNodeCount(false);
+        string[] empty = new string[] { "", "", "" };
+
+        for (int i = 0; i < nodeCount; i++) {
+            currentChatUIController.PushSpeechbubble(VD.nodeData.comments[0], VD.nodeData.isPlayer);
+            if (VD.nodeData.isPlayer) {
+                currentChatUIController.UpdateButtonText(empty, m_currentDialogue);
+            }
+            if (!VD.nodeData.isEnd)
+                VD.Next();
+        }
     }
 }

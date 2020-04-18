@@ -40,8 +40,10 @@ public class JSONHelper : MonoBehaviour
     }
 
     public void Awake() {
+        /*
         loadJSONCoroutine = ReadJSON();
         StartCoroutine(loadJSONCoroutine);
+        */
     }
 
     public JSONChat GetChat() {
