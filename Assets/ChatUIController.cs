@@ -74,12 +74,15 @@ public class ChatUIController : MonoBehaviour {
         chatScrollContainer = scrollView_go.transform.GetChild(0).gameObject;
     }
 
-    public void PushSpeechbubble(string _message, bool isPlayer) {
+    public void PushSpeechbubble(string _message, bool isPlayer, bool isAnimating) {
         GameObject speechbubble_go;
         if (isPlayer)
             speechbubble_go = Instantiate(questionChat_pf, chatScrollContainer.transform);
         else
             speechbubble_go = Instantiate(answerChat_pf, chatScrollContainer.transform);
+
+        if (!isAnimating)
+            speechbubble_go.GetComponent<Animation>().enabled = false;
 
         TextMeshProUGUI message = speechbubble_go.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI date = speechbubble_go.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -110,6 +113,13 @@ public class ChatUIController : MonoBehaviour {
             playerAnswerTwo.text = nodeDataComments[1];
             playerAnswerThree.text = nodeDataComments[2];
         }
+
+    }
+
+    public void UpdateButtons() {
+        playerAnswerOne = m_activeChat.transform.GetChild(2).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+        playerAnswerTwo = m_activeChat.transform.GetChild(3).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+        playerAnswerThree = m_activeChat.transform.GetChild(4).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
 
     }
 

@@ -88,7 +88,7 @@ public class DialogueManager_Sms : MonoBehaviour {
             }
             else { //not a player
                 if (data.comments.Length == 1) {
-                    currentChatUIController.PushSpeechbubble(data.comments[0], false);
+                    currentChatUIController.PushSpeechbubble(data.comments[0], false, true);
                     if (!data.isEnd)
                         Interact(m_currentDialogue);
                 }
@@ -110,13 +110,13 @@ public class DialogueManager_Sms : MonoBehaviour {
             if (choice < data.comments.Length) {
                 data.commentIndex = choice;
                 //push player answer to UI
-                currentChatUIController.PushSpeechbubble(data.comments[choice], true);
+                currentChatUIController.PushSpeechbubble(data.comments[choice], true, true);
             }
             else {
                 Debug.Log("player choice is higher than node comment index");
                 data.commentIndex = 0;
                 //push player answer to UI
-                currentChatUIController.PushSpeechbubble(data.comments[0], true);
+                currentChatUIController.PushSpeechbubble(data.comments[0], true, true);
             }
 
             if (!data.isEnd)
@@ -203,12 +203,10 @@ public class DialogueManager_Sms : MonoBehaviour {
 
         int nodeCount = VD.GetNodeCount(false);
         string[] empty = new string[] { "", "", "" };
+        currentChatUIController.UpdateButtonText(empty, m_currentDialogue);
 
         for (int i = 0; i < nodeCount; i++) {
-            currentChatUIController.PushSpeechbubble(VD.nodeData.comments[0], VD.nodeData.isPlayer);
-            if (VD.nodeData.isPlayer) {
-                currentChatUIController.UpdateButtonText(empty, m_currentDialogue);
-            }
+            currentChatUIController.PushSpeechbubble(VD.nodeData.comments[0], VD.nodeData.isPlayer, false);
             if (!VD.nodeData.isEnd)
                 VD.Next();
         }
