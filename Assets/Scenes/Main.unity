@@ -1712,6 +1712,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609350446}
   m_CullTransparentMesh: 0
+--- !u!1 &646849077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1976193449887184288, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1010269369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &646849081
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646849077}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1ba880d401d193748aa6a67974cb8591, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1ba880d401d193748aa6a67974cb8591, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &660085801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,6 +2402,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2020232169}
         m_MethodName: CloseApps
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1742235568}
+        m_MethodName: PauseConversation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4350,6 +4383,76 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6762443227430095685, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762443227430095685, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351302037761212, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351302037761212, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351302037761212, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351302037761212, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1742235568}
+    - target: {fileID: 114351302037761212, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: PauseConversation
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351302037761212, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378505450046993384, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378505450046993384, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378505450046993384, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378505450046993384, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1742235568}
+    - target: {fileID: 7378505450046993384, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: PauseConversation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378505450046993384, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 159827a6b1c91a24e93f738fbc0c75e3, type: 3}
 --- !u!114 &1010269371 stripped
@@ -5757,6 +5860,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1993449313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8035620741136303528, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1010269369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &1993449317
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993449313}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1ba880d401d193748aa6a67974cb8591, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1ba880d401d193748aa6a67974cb8591, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &1999914310 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114394529990644672, guid: 159827a6b1c91a24e93f738fbc0c75e3,

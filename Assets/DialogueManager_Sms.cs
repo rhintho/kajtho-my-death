@@ -52,6 +52,8 @@ public class DialogueManager_Sms : MonoBehaviour {
 
     public void PrepareDialogue(VIDE_Assign dialogue) {
 
+        //load state, needs to be created first
+        VD.LoadState("levelState", true);
         //VD.OnActionNode += ActionHandler; // to be implemented
         VD.OnNodeChange += UpdateUI;
         VD.OnEnd += EndConversation; //Required events
