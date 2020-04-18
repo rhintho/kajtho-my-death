@@ -36,7 +36,6 @@ public class ChatUIController : MonoBehaviour {
 
         foreach (Transform child in allChats)
             allChats_List.Add(child.gameObject);
-
     }
 
     // Update is called once per frame
@@ -62,14 +61,14 @@ public class ChatUIController : MonoBehaviour {
     }
     public void UpdateActiveChat(GameObject activeChat) {
         m_activeChat = activeChat;
-        foreach(GameObject chat in allChats_List){
+        foreach (GameObject chat in allChats_List) {
             if (chat.Equals(m_activeChat))
                 m_activeChat.SetActive(true);
             else {
                 chat.SetActive(false);
             }
         }
-    
+
         //get active transforms for animation purposes
         scrollView_go = m_activeChat.transform.GetChild(1).GetChild(0).gameObject;
         chatScrollContainer = scrollView_go.transform.GetChild(0).gameObject;
@@ -101,7 +100,7 @@ public class ChatUIController : MonoBehaviour {
         playerAnswerTwo = m_activeChat.transform.GetChild(3).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         playerAnswerThree = m_activeChat.transform.GetChild(4).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
 
-        if(nodeDataComments.Length == 1) {
+        if (nodeDataComments.Length == 1) {
             playerAnswerOne.text = nodeDataComments[0];
             playerAnswerTwo.text = "";
             playerAnswerThree.text = "";
@@ -120,6 +119,11 @@ public class ChatUIController : MonoBehaviour {
         playerAnswerThree.transform.parent.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// will change the size of the speech bubble according to content
+    /// will update the size of the container of all chatitems
+    /// will trigger the animation if the chat would be out of the viewportz
+    /// </summary>
     void UpdateRectangleTransform(RectTransform rectangle, float height) {
         RectTransform speechbubbleTransform = rectangle;
         m_yScrollPosition = scrollView_go.transform.parent.GetComponent<ScrollView>().yScrollPosition;
