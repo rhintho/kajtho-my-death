@@ -81,20 +81,23 @@ public class DialogueManager_Sms : MonoBehaviour {
         }
     }
 
-
     //triggered by buttons in scene
     public void LoadNextNode(int choice) {
         //Debug.Log("loadnext");
         if (VD.isActive) {
             var data = VD.nodeData;
-
-            if (choice <= data.comments.Length) {
+            if (choice < data.comments.Length) {
                 data.commentIndex = choice;
                 //push player answer to UI
                 currentChatUIController.PushSpeechbubble(data.comments[choice], true);
             }
-            else
+            else {
                 Debug.Log("player choice is higher than node comment index");
+                data.commentIndex = 0;
+                //push player answer to UI
+                currentChatUIController.PushSpeechbubble(data.comments[0], true);
+            }
+              
             if (!data.isEnd)
                 VD.Next();
         }
@@ -106,7 +109,6 @@ public class DialogueManager_Sms : MonoBehaviour {
 
     public void EndConversation(VD.NodeData data) {
         Debug.Log("conversation ends");
-
         //VD.OnActionNode -= ActionHandler;
         VD.OnNodeChange -= UpdateUI;
         VD.OnEnd -= EndConversation;
@@ -136,7 +138,6 @@ public class DialogueManager_Sms : MonoBehaviour {
             VD.OnNodeChange -= UpdateUI;
             VD.OnEnd -= EndConversation;
             //VD.SaveState("levelState", true); //Saves VIDE stuff related to EVs and override start nodes
-            // m_currentNodeID = VD.nodeData.nodeID;
             dialogueState.currentNode = VD.nodeData.nodeID;
             VD.EndDialogue();
 
@@ -150,7 +151,6 @@ public class DialogueManager_Sms : MonoBehaviour {
         Debug.Log("should load at: " + dialogueState.currentNode);
         VD.BeginDialogue(dialogue);
         VD.SetNode(dialogueState.currentNode);
-        //VD.Next();
         //VD.OnActionNode += ActionHandler; // to be implemented
         VD.OnNodeChange += UpdateUI;
         VD.OnEnd += EndConversation; //Required events

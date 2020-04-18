@@ -2703,6 +2703,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1976193449887184288, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224643207852127708, guid: 159827a6b1c91a24e93f738fbc0c75e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4288,11 +4293,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1976193449887184288, guid: 159827a6b1c91a24e93f738fbc0c75e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1006694521513884819, guid: 159827a6b1c91a24e93f738fbc0c75e3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4331,7 +4331,7 @@ PrefabInstance:
     - target: {fileID: 8607604614432419748, guid: 159827a6b1c91a24e93f738fbc0c75e3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: PrepareDialogue
+      value: Interact
       objectReference: {fileID: 0}
     - target: {fileID: 8607604614432419748, guid: 159827a6b1c91a24e93f738fbc0c75e3,
         type: 3}
@@ -4356,7 +4356,7 @@ PrefabInstance:
     - target: {fileID: 3084120274680072316, guid: 159827a6b1c91a24e93f738fbc0c75e3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: PrepareDialogue
+      value: Interact
       objectReference: {fileID: 0}
     - target: {fileID: 3084120274680072316, guid: 159827a6b1c91a24e93f738fbc0c75e3,
         type: 3}
@@ -4452,6 +4452,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655756080842234087, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: S_playerDiags.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655756080842234087, guid: 159827a6b1c91a24e93f738fbc0c75e3,
+        type: 3}
+      propertyPath: preload
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 159827a6b1c91a24e93f738fbc0c75e3, type: 3}
@@ -5499,7 +5509,8 @@ MonoBehaviour:
   playerAnswerOne: {fileID: 1999914310}
   playerAnswerTwo: {fileID: 117466567}
   playerAnswerThree: {fileID: 1956660553}
-  currentChatController: {fileID: 1587906190}
+  currentChatUIController: {fileID: 1587906190}
+  dialogueState: {fileID: 0}
 --- !u!4 &1742235569
 Transform:
   m_ObjectHideFlags: 0
