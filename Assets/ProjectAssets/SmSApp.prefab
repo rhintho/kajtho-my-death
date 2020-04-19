@@ -1409,7 +1409,7 @@ GameObject:
   - component: {fileID: 5791188399617553721}
   - component: {fileID: 7792493041572599350}
   m_Layer: 5
-  m_Name: SmSAll
+  m_Name: SmSApp
   m_TagString: App
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3867,6 +3867,7 @@ GameObject:
   - component: {fileID: 5612375309374329803}
   - component: {fileID: 5881432268308680897}
   - component: {fileID: 8607604614432419748}
+  - component: {fileID: 4355562069445221412}
   m_Layer: 5
   m_Name: mom
   m_TagString: Untagged
@@ -3974,53 +3975,28 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5881432268308680897}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8035620741136303528}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1976193449887184288}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7792493041572599350}
-        m_MethodName: UpdateActiveChat
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 6996094936554062187}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &4355562069445221412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813073291049698874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109fc4adc14cd5844a4317c43e3770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_name: {fileID: 4464121577914309253}
+  m_lastMessage: {fileID: 2815250318306517478}
+  m_date: {fileID: 1495259663903615066}
+  go_smsAll: {fileID: 8035620741136303528}
+  go_smsMenu: {fileID: 1976193449887184288}
+  go_chat: {fileID: 6996094936554062187}
+  uiController: {fileID: 7792493041572599350}
 --- !u!1 &1815741484662412574
 GameObject:
   m_ObjectHideFlags: 0
@@ -4381,6 +4357,7 @@ GameObject:
   - component: {fileID: 6762443227430095685}
   - component: {fileID: 3273341988468217994}
   - component: {fileID: 502854968231539156}
+  - component: {fileID: 6248545425628222652}
   m_Layer: 5
   m_Name: SMSMenu
   m_TagString: Untagged
@@ -4447,6 +4424,22 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!111 &6248545425628222652
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976193449887184288}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1ba880d401d193748aa6a67974cb8591, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1ba880d401d193748aa6a67974cb8591, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2311233366655923019
 GameObject:
   m_ObjectHideFlags: 0
@@ -5058,6 +5051,7 @@ GameObject:
   - component: {fileID: 7991286793023797686}
   - component: {fileID: 6655756080842234087}
   - component: {fileID: 2229508495048410822}
+  - component: {fileID: 6172989403952270575}
   m_Layer: 5
   m_Name: SMSOpen_jellybeans
   m_TagString: Untagged
@@ -5183,6 +5177,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 231596195c262c44899cd07340245b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6172989403952270575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3061775748684022618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38309c08548175143aff7c2afcf8984b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smsMenuUser: {fileID: 7259432004902324776}
 --- !u!1 &3177115612653677615
 GameObject:
   m_ObjectHideFlags: 0
@@ -8461,6 +8468,7 @@ GameObject:
   - component: {fileID: 8652386693346160054}
   - component: {fileID: 8752201750830111860}
   - component: {fileID: 316232586610873842}
+  - component: {fileID: 3435193682284070208}
   m_Layer: 5
   m_Name: SMSOpen_Mom
   m_TagString: Untagged
@@ -8586,6 +8594,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 231596195c262c44899cd07340245b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3435193682284070208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6996094936554062187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38309c08548175143aff7c2afcf8984b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smsMenuUser: {fileID: 1813073291049698874}
 --- !u!1 &7064306956369006719
 GameObject:
   m_ObjectHideFlags: 0
@@ -8825,6 +8846,7 @@ GameObject:
   - component: {fileID: 6391021648046011943}
   - component: {fileID: 8950101826262037378}
   - component: {fileID: 3084120274680072316}
+  - component: {fileID: 6817260638426428747}
   m_Layer: 5
   m_Name: jellybeans
   m_TagString: Untagged
@@ -8932,53 +8954,28 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8950101826262037378}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8035620741136303528}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1976193449887184288}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7792493041572599350}
-        m_MethodName: UpdateActiveChat
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 3061775748684022618}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &6817260638426428747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7259432004902324776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109fc4adc14cd5844a4317c43e3770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_name: {fileID: 8239188070373527286}
+  m_lastMessage: {fileID: 3611248487162598742}
+  m_date: {fileID: 6681047541524643089}
+  go_smsAll: {fileID: 8035620741136303528}
+  go_smsMenu: {fileID: 1976193449887184288}
+  go_chat: {fileID: 3061775748684022618}
+  uiController: {fileID: 7792493041572599350}
 --- !u!1 &7264054498743893027
 GameObject:
   m_ObjectHideFlags: 0
@@ -9510,6 +9507,7 @@ GameObject:
   - component: {fileID: 1951269788547105838}
   - component: {fileID: 150694737964038271}
   - component: {fileID: 7826296559122109128}
+  - component: {fileID: 1009744480087072305}
   m_Layer: 5
   m_Name: SmSAll
   m_TagString: Untagged
@@ -9575,6 +9573,22 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!111 &1009744480087072305
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8035620741136303528}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1ba880d401d193748aa6a67974cb8591, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1ba880d401d193748aa6a67974cb8591, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8042758302387948054
 GameObject:
   m_ObjectHideFlags: 0

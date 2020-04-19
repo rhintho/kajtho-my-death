@@ -9,6 +9,7 @@ public class ChatUIController : MonoBehaviour {
     GameObject scrollView_go;
     GameObject chatScrollContainer;
     GameObject m_activeChat;
+    GameObject m_activeUser;
     RectTransform m_chatScrollRectTransform;
 
     public GameObject questionChat_pf;
@@ -61,6 +62,8 @@ public class ChatUIController : MonoBehaviour {
     }
     public void UpdateActiveChat(GameObject activeChat) {
         m_activeChat = activeChat;
+        m_activeUser = m_activeChat.GetComponent<SMSOpen>().smsMenuUser;
+
         foreach (GameObject chat in allChats_List) {
             if (chat.Equals(m_activeChat))
                 m_activeChat.SetActive(true);
@@ -129,6 +132,18 @@ public class ChatUIController : MonoBehaviour {
         playerAnswerThree.transform.parent.gameObject.SetActive(false);
     }
 
+    public void SetDate(string date) {
+        Debug.Log("setDate");
+        m_activeUser.GetComponent<ChatMenuUser>().SetDate(date);
+    }
+
+    public void SetName(string name) {
+        m_activeUser.GetComponent<ChatMenuUser>().SetName(name);
+    }
+
+    public void SetLastMessage(string lastMessage) {
+        m_activeUser.GetComponent<ChatMenuUser>().SetLastMessage(lastMessage);
+    }
     /// <summary>
     /// will change the size of the speech bubble according to content
     /// will update the size of the container of all chatitems

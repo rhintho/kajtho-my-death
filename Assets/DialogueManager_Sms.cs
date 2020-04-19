@@ -10,6 +10,16 @@ using TMPro;
  * 
  */
 public class DialogueManager_Sms : MonoBehaviour {
+    //singleton
+    private static DialogueManager_Sms _instance;
+    public static DialogueManager_Sms Instance {
+        get {
+            if(_instance == null) {
+                _instance = GameObject.FindObjectOfType<DialogueManager_Sms>();
+            }
+            return _instance;
+        }
+    }
     //button texts. should update this everytime there is an interaction happening
     public TextMeshProUGUI playerAnswerOne;
     public TextMeshProUGUI playerAnswerTwo;
@@ -24,6 +34,8 @@ public class DialogueManager_Sms : MonoBehaviour {
     public CustomDialogueState dialogueState;
 
     void Awake() {
+        //singleton
+        DontDestroyOnLoad(gameObject);
         // gameObject.AddComponent<VD>();
         VD.LoadDialogues("MyDialogue");
         VD.LoadDialogues("Mom_sms");
@@ -87,6 +99,7 @@ public class DialogueManager_Sms : MonoBehaviour {
                 currentChatUIController.UpdateButtonText(data.comments, m_currentDialogue);
             }
             else { //not a player
+                UpdateExtraVariables(data);
                 if (data.comments.Length == 1) {
                     currentChatUIController.PushSpeechbubble(data.comments[0], false, true);
                     if (!data.isEnd)
@@ -207,8 +220,24 @@ public class DialogueManager_Sms : MonoBehaviour {
 
         for (int i = 0; i < nodeCount; i++) {
             currentChatUIController.PushSpeechbubble(VD.nodeData.comments[0], VD.nodeData.isPlayer, false);
-            if (!VD.nodeData.isEnd)
+            if (!VD.nodeData.isEnd) {
+                UpdateExtraVariables(VD.nodeData);
                 VD.Next();
+            }
+              
         }
+
+    }
+
+    public void UpdateExtraVariables(VD.NodeData data) {
+        string date = "";
+        if (data.extraVars.ContainsKey("Date")) {
+            date = (string)data.extraVars["Date"];
+            currentChatUIController.SetDate(date);
+        }
+
+        string lastMessage = data.comments[0];
+        currentChatUIController.SetLastMessage(lastMessage);
+
     }
 }
