@@ -75,14 +75,12 @@ namespace Michsky.UI.ModernUIPack
             }
             else if (newPanel == currentPanelIndex) {
                 InitializeTab();
-                Debug.Log("same");
             }
               
         }
 
         public void OnEnable() {
             InitializeTab();
-            Debug.Log("enable");
         }
 
         public void InitializeTab() {
