@@ -1,0 +1,19 @@
+# add new messanger
+* app app prefab to scene
+* add question and answer Prefab to Chat UI Controller skript
+* connect app to app icon on homescreen
+* check that app prefab tag is set to App and layer is set to UI
+
+
+# add new dialogue
+* add the new app to Dialogue Manager
+* add created dialogues ti dialogue manager
+* go to App>SMSMenu>ScrollView>Content>
+* add new user container with skript "chat menu user"
+* make sure that all variables are set
+
+* open SmSAll
+* add SMSOpen_user container
+* add VIDE Editor
+* add CustomDialogueState.cs 
+* add SMS Open.cs and add user from menu to reference

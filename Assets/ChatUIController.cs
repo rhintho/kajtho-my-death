@@ -77,6 +77,9 @@ public class ChatUIController : MonoBehaviour {
         chatScrollContainer = scrollView_go.transform.GetChild(0).gameObject;
     }
 
+    /// <summary>
+    /// instantiates speech bubble from prefab with text and date
+    /// </summary>
     public void PushSpeechbubble(string _message, bool isPlayer, bool isAnimating) {
         GameObject speechbubble_go;
         if (isPlayer)
@@ -119,6 +122,9 @@ public class ChatUIController : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// update button references and active chat controller
+    /// </summary>
     public void UpdateButtons() {
         playerAnswerOne = m_activeChat.transform.GetChild(2).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         playerAnswerTwo = m_activeChat.transform.GetChild(3).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
@@ -126,6 +132,9 @@ public class ChatUIController : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// there should be no buttons to click when the conversation is over
+    /// </summary>
     public void DisableButtons() {
         playerAnswerOne.transform.parent.gameObject.SetActive(false);
         playerAnswerTwo.transform.parent.gameObject.SetActive(false);
@@ -167,7 +176,7 @@ public class ChatUIController : MonoBehaviour {
     void AnimateScrollView() {
         //TODO: magic numbers
         if (m_scrollViewHeight < m_yScrollPosition * -1 && m_chatScrollRectTransform.anchoredPosition.y < (m_yScrollPosition + 800) * -1) {
-            m_chatScrollRectTransform.anchoredPosition = new Vector2(m_chatScrollRectTransform.anchoredPosition.x, m_chatScrollRectTransform.anchoredPosition.y + 5);
+            m_chatScrollRectTransform.anchoredPosition = new Vector2(m_chatScrollRectTransform.anchoredPosition.x, m_chatScrollRectTransform.anchoredPosition.y + Time.deltaTime * 1000);
 
             if (m_chatScrollRectTransform.anchoredPosition.y > (m_yScrollPosition + 800) * -1)
                 m_isScrollViewAnimating = false;
