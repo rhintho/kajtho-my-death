@@ -73,6 +73,27 @@ namespace Michsky.UI.ModernUIPack
                 currentButtonAnimator.Play(buttonFadeOut);
                 nextButtonAnimator.Play(buttonFadeIn);
             }
+            else if (newPanel == currentPanelIndex) {
+                InitializeTab();
+                Debug.Log("same");
+            }
+              
+        }
+
+        public void OnEnable() {
+            InitializeTab();
+            Debug.Log("enable");
+        }
+
+        public void InitializeTab() {
+
+            currentButton = buttons[currentPanelIndex];
+            currentButtonAnimator = currentButton.GetComponent<Animator>();
+            currentButtonAnimator.Play(buttonFadeIn);
+
+            currentPanel = panels[currentPanelIndex];
+            currentPanelAnimator = currentPanel.GetComponent<Animator>();
+            currentPanelAnimator.Play(panelFadeIn);
         }
     }
 }
